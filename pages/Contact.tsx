@@ -21,29 +21,43 @@ const Contact: React.FC = () => {
                         {/* Contact Form */}
                         <div className="md:col-span-3 bg-white p-8 rounded-lg shadow-lg border">
                             <h2 className="text-2xl font-bold font-display text-neutral-900 mb-6">Send Us a Message</h2>
-                            <form onSubmit={(e) => e.preventDefault()}>
+                            <form
+                                action="https://formspree.io/f/mqaydzro"  // ← your real endpoint
+                                method="POST"
+                                className=""
+                            >
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="first-name" className="block text-sm font-medium text-neutral-700 mb-1">First Name</label>
-                                        <input type="text" id="first-name" className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
+                                        <input id="first-name" name="firstName" required className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
                                     </div>
                                     <div>
                                         <label htmlFor="last-name" className="block text-sm font-medium text-neutral-700 mb-1">Last Name</label>
-                                        <input type="text" id="last-name" className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
+                                        <input id="last-name" name="lastName" required className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
                                     </div>
                                 </div>
+
                                 <div className="mb-6">
                                     <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">Email</label>
-                                    <input type="email" id="email" className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
+                                    <input type="email" id="email" name="email" required className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light" />
                                 </div>
+
                                 <div className="mb-6">
                                     <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">Message</label>
-                                    <textarea id="message" rows={5} className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light"></textarea>
+                                    <textarea id="message" name="message" rows={5} required className="w-full p-3 border border-neutral-300 rounded-md focus:ring-primary-light focus:border-primary-light"></textarea>
                                 </div>
+
+                                {/* Optional extras */}
+                                <input type="hidden" name="_subject" value="New contact form submission" />
+                                <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" /> {/* spam honeypot */}
+                                {/* Redirect to a thank-you page after submit (optional): */}
+                                <input type="hidden" name="_next" value="https://radaanalytics.com/thanks" />
+
                                 <button type="submit" className="w-full bg-primary-light text-white py-3 rounded-md font-semibold hover:bg-primary-dark transition-colors">
                                     Submit Inquiry
                                 </button>
                             </form>
+
                         </div>
                         {/* Contact Info */}
                         <div className="md:col-span-2">
@@ -51,14 +65,14 @@ const Contact: React.FC = () => {
                                 <h2 className="text-2xl font-bold font-display text-neutral-900 mb-6">Contact Information</h2>
                                 <div className="space-y-4 text-neutral-700">
                                     <p className="flex items-center"><PhoneIcon /> <a href="tel:+1234567890" className="ml-3 hover:text-primary-dark">(123) 456-7890</a></p>
-                                    <p className="flex items-center"><EmailIcon /> <a href="mailto:contact@radaanalytics.com" className="ml-3 hover:text-primary-dark">contact@radaanalytics.com</a></p>
+                                    <p className="flex items-center"><EmailIcon /> <a href="mailto:info@radanalytics.com" className="ml-3 hover:text-primary-dark">info@radanalytics.com</a></p>
                                     <div className="flex items-start"><LocationIcon /><div className="ml-3">
                                         <p>123 Analytics Ave, Suite 100</p>
                                         <p>Data City, DC 12345</p>
                                     </div></div>
                                 </div>
                                 <div className="mt-8 rounded-lg overflow-hidden">
-                                     <iframe
+                                    <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.213506245318!2d-73.98824368459393!3d40.75797477932688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6434227%3A0x1d32a13f6fbf45!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1633379555026!5m2!1sen!2sus"
                                         width="100%"
                                         height="250"
