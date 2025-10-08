@@ -13,19 +13,19 @@ export const NAV_LINKS: NavLink[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Jane Doe',
+    name: 'Ingabo Khatasia',
     role: 'Founder & Lead Analyst',
     bio: 'With over 15 years of experience in finance and analytics, Jane founded RADA to bridge the gap between raw data and actionable business strategy.',
     imageUrl: 'https://picsum.photos/seed/person1/400/400',
   },
   {
-    name: 'John Smith',
+    name: 'Ingabo Khatasia',
     role: 'Head of Bookkeeping',
     bio: 'John is a certified public accountant with a passion for streamlining financial processes and ensuring immaculate records for our clients.',
     imageUrl: 'https://picsum.photos/seed/person2/400/400',
   },
   {
-    name: 'Emily White',
+    name: 'Ingabo Khatasia',
     role: 'Data Scientist',
     bio: 'Emily specializes in financial modeling and predictive analytics, turning historical data into future insights that drive growth.',
     imageUrl: 'https://picsum.photos/seed/person3/400/400',

@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
                         <div className="md:col-span-3 bg-white p-8 rounded-lg shadow-lg border">
                             <h2 className="text-2xl font-bold font-display text-neutral-900 mb-6">Send Us a Message</h2>
                             <form
-                                action="https://formspree.io/f/mqaydzro"  // ← your real endpoint
+                                action="https://formspree.io/f/xldpwppq"  // ← your real endpoint
                                 method="POST"
                                 className=""
                             >
