@@ -303,7 +303,7 @@ const ServicesPage = () => (
   <div className="pt-32 pb-24 space-y-24">
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8">Four Services. One Focus: AFH Providers in the MCO Program.</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8">Five Services. One Focus: AFH Providers in the MCO Program.</h1>
         <p className="text-xl text-slate-600 leading-relaxed">
           Every service we offer is built around the specific realities of CBHS, IBSS, and Washington State's Apple Health managed care landscape. We don't serve general small businesses — we serve Adult Family Homes.
         </p>
@@ -358,6 +358,19 @@ const ServicesPage = () => (
             "Translate data into decisions, not just reports"
           ],
           approach: "We don't hand you a dashboard and walk away. We walk you through what it means, why it matters, and what to do about it."
+        },
+        {
+          title: "Business Package",
+          intro: "Establishing a strong online presence is essential for modern business success. We help you set up and manage all aspects of your digital visibility.",
+          items: [
+            "Professional email setup with custom domain configuration",
+            "Website creation or optimization for better visibility and user experience",
+            "Social media account setup and branding across platforms",
+            "Initial content creation and posting strategy",
+            "Basic SEO optimization for improved search visibility",
+            "Integration of contact forms and lead capture tools"
+          ],
+          for: "AFH providers looking to establish or strengthen their online presence and attract new residents and their families."
         }
       ].map((service, i) => (
         <div key={i} className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
@@ -431,7 +444,7 @@ const AboutPage = () => (
         </div>
         <div className="bg-emerald-100 rounded-3xl aspect-[4/5] overflow-hidden relative">
           <img 
-            src="https://picsum.photos/seed/consultant/800/1000" 
+            src="public/1712317851393.jpeg" 
             alt="Ingabo Khatasia" 
             className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
@@ -455,6 +468,21 @@ const AboutPage = () => (
             His approach is practical and provider-centered: he knows that AFH operators are dedicated caregivers first, and that the administrative complexity of the MCO program shouldn't get in the way of the care they're providing. He works alongside his clients, not just behind the scenes, so they understand what's happening with their billing, their authorizations, and their homes.
           </p>
         </div>
+      </div>
+    </section>
+
+    {/* Placeholder section for Nyangayi Otuya */}
+    <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white p-12 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center">
+        <h2 className="text-2xl font-bold text-slate-900 mb-8">Nyangayi Otuya</h2>
+        <img 
+          src="public/ChatGPT Image Apr 4, 2025, 09_07_51 AM.png" 
+          alt="Nyangayi Otuya" 
+          className="w-48 h-48 rounded-full mb-6"
+        />
+        <p className="text-slate-600 text-center">
+          Nyangayi Otuya is the developer behind our Business Package, specializing in crafting online visibility solutions for Adult Family Home providers. With a background in web development and digital marketing, she builds professional email systems, user-friendly websites, and engaging social media profiles. Nyangayi combines technical expertise with a keen understanding of provider needs to deliver cohesive, high-impact digital presences that help homes attract residents and their families.
+        </p>
       </div>
     </section>
   </div>
@@ -507,67 +535,98 @@ const WhyUsPage = () => (
   </div>
 );
 
-const ContactPage = () => (
-  <div className="pt-32 pb-24">
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-        <div>
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8">Let's Talk About Your Home</h1>
-          <p className="text-xl text-slate-600 mb-12 leading-relaxed">
-            Whether you're new to CBHS or IBSS, dealing with denials, wondering if your residents are tiered correctly, or just trying to keep up with what HCA is changing next — we're here. Schedule a free consultation and let's figure out exactly where you need support.
-          </p>
-          
-          <div className="space-y-8">
-            <div className="flex items-center gap-6 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
-                <Mail size={24} />
+const ContactPage = () => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    const formData = new FormData(e.currentTarget);
+
+    const res = await fetch('https://formspree.io/f/xldpwppq', {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' },
+    });
+
+    setStatus(res.ok ? 'success' : 'error');
+  };
+
+  return (
+    <div className="pt-32 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8">Let's Talk About Your Home</h1>
+            <p className="text-xl text-slate-600 mb-12 leading-relaxed">
+              Whether you're new to CBHS or IBSS, dealing with denials, wondering if your residents are tiered correctly, or just trying to keep up with what HCA is changing next — we're here. Schedule a free consultation and let's figure out exactly where you need support.
+            </p>
+
+            <div className="space-y-8">
+              <div className="flex items-center gap-6 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900">Email Us</h4>
+                  <p className="text-slate-600">info@radaanalytics.com</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-slate-900">Email Us</h4>
-                <p className="text-slate-600">info@radaanalytics.com</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-6 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h4 className="font-bold text-slate-900">Location</h4>
-                <p className="text-slate-600">Federal Way, WA</p>
+              <div className="flex items-center gap-6 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900">Location</h4>
+                  <p className="text-slate-600">Federal Way, WA</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700">Full Name</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Jane Doe" />
+          <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xl">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-700">Full Name</label>
+                  <input name="full_name" type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Jane Doe" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-700">AFH Name</label>
+                  <input name="afh_name" type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Your Home Name" />
+                </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700">AFH Name</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Your Home Name" />
+                <label className="text-sm font-semibold text-slate-700">Email Address</label>
+                <input name="email" type="email" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="jane@example.com" />
               </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Email Address</label>
-              <input type="email" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="jane@example.com" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">How can we help?</label>
-              <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Tell us about your billing or retiering needs..."></textarea>
-            </div>
-            <button className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100">
-              Send Message
-            </button>
-          </form>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-slate-700">How can we help?</label>
+                <textarea name="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all" placeholder="Tell us about your billing or retiering needs..."></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 disabled:opacity-60"
+              >
+                {status === 'submitting' ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {status === 'success' && (
+                <p className="text-emerald-600 text-center font-medium">✅ Message sent! We'll be in touch soon.</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-500 text-center font-medium">Something went wrong. Please try again.</p>
+              )}
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
 // --- Main App ---
 
