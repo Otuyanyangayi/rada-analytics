@@ -299,7 +299,7 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
   </div>
 );
 
-const ServicesPage = () => (
+const ServicesPage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => (
   <div className="pt-32 pb-24 space-y-24">
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
@@ -416,7 +416,8 @@ const ServicesPage = () => (
         <p className="text-slate-400 max-w-2xl mx-auto mb-10">
           Every AFH has different needs, different resident populations, and different levels of MCO complexity. We offer custom pricing based on your specific situation.
         </p>
-        <button className="text-emerald-400 font-bold flex items-center gap-2 mx-auto hover:text-emerald-300 transition-colors">
+        <button onClick={() => setCurrentPage('contact')}
+        className="text-emerald-400 font-bold flex items-center gap-2 mx-auto hover:text-emerald-300 transition-colors">
           Contact for Custom Quote <ArrowRight size={20} />
         </button>
       </div>
