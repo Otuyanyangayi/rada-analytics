@@ -445,7 +445,7 @@ const AboutPage = () => (
         </div>
         <div className="bg-emerald-100 rounded-3xl aspect-[4/5] overflow-hidden relative">
           <img 
-            src="public/1712317851393.jpeg" 
+            src="/1712317851393.jpeg" 
             alt="Ingabo Khatasia" 
             className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
@@ -477,7 +477,7 @@ const AboutPage = () => (
       <div className="bg-white p-12 rounded-3xl border border-slate-100 shadow-sm flex flex-col items-center">
         <h2 className="text-2xl font-bold text-slate-900 mb-8">Nyangayi Otuya</h2>
         <img 
-          src="public/ChatGPT Image Apr 4, 2025, 09_07_51 AM.png" 
+          src="/ChatGPT Image Apr 4, 2025, 09_07_51 AM.png" 
           alt="Nyangayi Otuya" 
           className="w-48 h-48 rounded-full mb-6"
         />
